@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MacGuard — Anti-theft alarm for your Mac</title>
   <meta name="description" content="Unplug the charger while armed and MacGuard sounds an alarm, locks the screen and emails you the Mac's location. Free and open source for macOS.">
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#e2f5e8">
   <meta property="og:title" content="MacGuard — Anti-theft alarm for your Mac">
   <meta property="og:description" content="Alarm, screen lock, location and an email alert when your charger is unplugged.">
   <meta property="og:image" content="assets/icon.png">
@@ -84,41 +85,28 @@
           <p>Released Oct 20, 2026 · 0.8 MB · macOS 13+ · Apple Silicon</p>
         </div>
         <div class="dl-actions">
-          <a class="btn primary" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.zip">Download .zip</a>
-          <a class="btn" href="https://github.com/prasodium/MacGuard/releases/tag/v0.1.0">Release notes</a>
+          <a class="btn primary" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.dmg">Download .dmg</a>
+          <a class="btn" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.pkg">.pkg installer</a>
+          <a class="btn" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.zip">.zip</a>
         </div>
       </div>
       <ol class="steps">
-        <li><div><h3>Unzip and move to Applications</h3></div></li>
+        <li><div><h3>Open the .dmg and drag MacGuard to Applications</h3><p>Or double-click the .pkg to install it for you.</p></div></li>
         <li><div><h3>Right-click the app, choose Open, then Open again</h3><p>It is not notarized yet, so macOS blocks a normal double-click the first time.</p></div></li>
         <li><div><h3>Follow the setup guide</h3><p>Email is optional. The alarm and screen lock work without it.</p></div></li>
       </ol>
-      <p class="hash">SHA-256: <code>433bb1ede8f57d5adfa33e7417631d0ffb72caa383fbe4a495f91be7e17a7c27</code></p>
+      <p class="hash"><a href="https://github.com/prasodium/MacGuard/releases/tag/v0.1.0">Release notes and checksums</a></p>
     </div>
   </section>
 
   <section class="alt" id="limits">
     <div class="wrap">
       <h2>Good to know</h2>
-      <div class="two">
-        <div class="tile">
-          <h3>It cannot</h3>
-          <ul class="cross" style="margin-top:10px">
-            <li>Stop a shutdown or force-quit</li>
-            <li>Work while the Mac is off or asleep</li>
-            <li>Promise the alarm is audible</li>
-          </ul>
-        </div>
-        <div class="tile">
-          <h3>It does</h3>
-          <ul class="tick" style="margin-top:10px">
-            <li>Run fully on your Mac, no server</li>
-            <li>Keep your Brevo key in the Keychain</li>
-            <li>Email only an address you verified</li>
-          </ul>
-        </div>
+      <div class="grid">
+        <div class="tile"><div class="ic">🖥️</div><h3>Runs on your Mac</h3><p>No server, no account, no tracking.</p></div>
+        <div class="tile"><div class="ic">🔑</div><h3>Key in the Keychain</h3><p>Your Brevo key never leaves your Mac.</p></div>
+        <div class="tile"><div class="ic">✅</div><h3>Verified address only</h3><p>Alerts go only to an email you confirmed.</p></div>
       </div>
-      <p class="note" style="margin-top:18px"><strong>Beta.</strong> Not yet tested on real hardware: many unplug cycles, a real email, the location prompt. <a href="docs.html#limits">Details</a></p>
     </div>
   </section>
 

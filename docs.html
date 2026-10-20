@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MacGuard docs</title>
   <meta name="description" content="Install, set up and use MacGuard, plus its limits, security and troubleshooting.">
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#e2f5e8">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="assets/styles.css">
@@ -45,9 +46,8 @@
 
     <h2 id="install">Install</h2>
     <ol>
-      <li><a href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.zip">Download MacGuard 0.1.0</a> and unzip it.</li>
-      <li>Move <strong>MacGuard.app</strong> to Applications.</li>
-      <li>Right-click it, choose <strong>Open</strong>, then <strong>Open</strong> again. It is not notarized yet.</li>
+      <li>Download <a href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.dmg">MacGuard-0.1.0.dmg</a>, open it and drag <strong>MacGuard</strong> to Applications. Prefer an installer? Use the <a href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.pkg">.pkg</a>.</li>
+      <li>Right-click the app, choose <strong>Open</strong>, then <strong>Open</strong> again. It is not notarized yet.</li>
       <li>If macOS says it is damaged, run <code>xattr -dr com.apple.quarantine /Applications/MacGuard.app</code> once.</li>
     </ol>
     <p>Or build it yourself: <code>scripts/build_app.sh release</code> in the <a href="https://github.com/prasodium/MacGuard">repository</a>. Allow Location when asked, and set <strong>Lock Screen → Require password</strong> to <em>Immediately</em>.</p>

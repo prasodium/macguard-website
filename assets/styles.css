@@ -1,18 +1,11 @@
 /* MacGuard website — plain CSS, no build step, no external requests. */
 :root {
-  --bg: #f7f8fb; --surface: #ffffff; --surface-2: #eef1f7; --text: #0f172a; --muted: #4b5568;
-  --line: #dfe4ee; --brand: #2456e6; --brand-2: #0f2f9c; --brand-text: #ffffff;
-  --ok: #0f7b4d; --warn: #9a5b00; --warn-bg: #fff4dd; --danger: #b42318; --code-bg: #0f172a; --code-text: #e6ecff;
-  --shadow: 0 1px 2px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.06);
+  color-scheme: light;
+  --bg: #f1fbf4; --surface: #ffffff; --surface-2: #e2f5e8; --text: #0f2a1a; --muted: #3d5a49;
+  --line: #cfe8d8; --brand: #15803d; --brand-2: #166534; --brand-text: #ffffff;
+  --ok: #15803d; --warn: #8a5300; --warn-bg: #fff4dd; --danger: #b42318; --code-bg: #0f2a1a; --code-text: #e3f7ea;
+  --shadow: 0 1px 2px rgba(15,42,26,.06), 0 8px 24px rgba(15,42,26,.08);
   --radius: 14px; --max: 1080px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b1020; --surface: #121a30; --surface-2: #19223c; --text: #e8edf8; --muted: #a3afc7;
-    --line: #26314f; --brand: #6c93ff; --brand-2: #3d63e0; --brand-text: #0b1020;
-    --ok: #4ade9a; --warn: #ffcc66; --warn-bg: #2a2110; --danger: #ff8a80; --code-bg: #0a0f1f; --code-text: #dbe5ff;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
-  }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
@@ -45,10 +38,9 @@ pre code { background: none; padding: 0; color: inherit; }
 .btn:hover { background: var(--surface-2); }
 .btn.primary { background: var(--brand-2); color: #fff; border-color: transparent; }
 .btn.primary:hover { filter: brightness(1.1); }
-@media (prefers-color-scheme: dark) { .btn.primary { background: var(--brand); color: var(--brand-text); } }
 
 /* hero */
-.hero { padding: 72px 0 56px; }
+.hero { padding: 72px 0 56px; background: linear-gradient(180deg, #e2f5e8 0%, var(--bg) 100%); }
 .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
 .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); background: color-mix(in srgb, var(--brand) 12%, transparent); padding: 4px 10px; border-radius: 999px; }
 h1 { font-size: clamp(34px, 5.4vw, 56px); line-height: 1.08; margin: 16px 0 14px; letter-spacing: -.02em; }
@@ -86,7 +78,6 @@ section.alt .tile { background: var(--bg); }
 .steps { counter-reset: s; display: grid; gap: 14px; padding: 0; list-style: none; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
 .steps li::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-2); color: #fff; font-weight: 700; }
-@media (prefers-color-scheme: dark) { .steps li::before { background: var(--brand); color: var(--brand-text); } }
 .steps li p { margin: 2px 0 0; color: var(--muted); }
 .two { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; }
 @media (max-width: 800px) { .two { grid-template-columns: minmax(0, 1fr); } }
