@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MacGuard — Anti-theft alarm for your Mac</title>
+  <meta name="description" content="MacGuard is a native macOS app that sounds an alarm, locks your screen and emails you the Mac's location when your charger is unplugged while armed.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="MacGuard — Anti-theft alarm for your Mac">
+  <meta property="og:description" content="Unplug the charger while armed: alarm, screen lock, location and an email alert. Native, private, no server.">
+  <meta property="og:image" content="assets/icon.png">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="30" height="30"> MacGuard</a>
+    <nav aria-label="Main">
+      <a class="hide-sm" href="#features">Features</a>
+      <a class="hide-sm" href="#how">How it works</a>
+      <a class="hide-sm" href="#limits">Limits</a>
+      <a class="hide-sm" href="#faq">FAQ</a>
+      <a href="docs.html">Docs</a>
+      <a href="https://github.com/prasodium/MacGuard">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Beta · macOS 13+ · Apple Silicon</span>
+        <h1>Someone unplugs your Mac. MacGuard makes noise.</h1>
+        <p class="lede">Arm it at a café or library. If the charger comes out, MacGuard sounds a loud alarm, locks the screen, grabs the Mac's location and emails you. A deterrent and a recovery aid, built natively for your Mac.</p>
+        <div class="cta">
+          <a class="btn primary" href="docs.html#install">Get started</a>
+          <a class="btn" href="https://github.com/prasodium/MacGuard">View source on GitHub</a>
+        </div>
+        <p class="meta">Free and open source · no account · no server · no tracking</p>
+      </div>
+
+      <div aria-hidden="true">
+        <div class="mock">
+          <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b>MacGuard</b></div>
+          <div class="body">
+            <div class="status"><div class="ico">🛡️</div><div class="big">PROTECTED</div><span class="pill">Disarm Protection…</span></div>
+            <div class="cards">
+              <div class="card-s"><small>Charger</small>Connected (charging)</div>
+              <div class="card-s"><small>Battery</small>87%</div>
+              <div class="card-s"><small>Monitoring</small>Healthy</div>
+              <div class="card-s"><small>Email</small>Ready</div>
+            </div>
+          </div>
+        </div>
+        <p class="caption">Illustration of the dashboard</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="features">
+    <div class="wrap">
+      <h2>What it does</h2>
+      <p class="sub">Everything runs on your Mac. When the charger is pulled while armed, these happen at once.</p>
+      <div class="grid">
+        <div class="tile"><div class="ic">⚡</div><h3>Charger detection</h3><p>Watches the power source through macOS itself. Brief wiggles are filtered with a delay you choose, from immediate to 10 seconds.</p></div>
+        <div class="tile"><div class="ic">🔔</div><h3>Loud, repeating alarm</h3><p>Pick the sound and repeat rate. It can raise the volume for you. Plug the charger back in and it stops, or stop it with Touch ID.</p></div>
+        <div class="tile"><div class="ic">🔒</div><h3>Screen lock</h3><p>Asks macOS to lock the session and tells you honestly whether the lock was confirmed.</p></div>
+        <div class="tile"><div class="ic">📍</div><h3>Location in the alert</h3><p>Uses Core Location with your permission. Every position is labelled fresh, cached or last known, with accuracy and time. Never faked.</p></div>
+        <div class="tile"><div class="ic">✉️</div><h3>Email to your Gmail</h3><p>Sent straight through your own Brevo account to an address you verified with a 6-digit code. Includes a map link when coordinates are valid.</p></div>
+        <div class="tile"><div class="ic">📶</div><h3>Works offline-ish</h3><p>No internet at the moment of theft? The alert is queued and sent when the connection returns, with careful retries.</p></div>
+        <div class="tile"><div class="ic">🔁</div><h3>Every unplug counts</h3><p>Reconnect and unplug again, and it alarms again. Each time is its own incident with its own alert.</p></div>
+        <div class="tile"><div class="ic">🧭</div><h3>Find My guide</h3><p>One button opens Apple's Find My with simple steps for Lost Mode. MacGuard never asks for your Apple password.</p></div>
+        <div class="tile"><div class="ic">🪫</div><h3>Light on battery</h3><p>Event-driven, with a slow safety check. It lives in the menu bar and keeps protecting when the window is closed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="sub">Set it up once, then arm it in one click whenever you leave your desk.</p>
+      <ol class="steps">
+        <li><div><h3>Set up</h3><p>Add a free Brevo key and verify your Gmail in Settings. Takes about five minutes. Skip it and the alarm and lock still work.</p></div></li>
+        <li><div><h3>Plug in and arm</h3><p>MacGuard checks the charger is connected, shows you what it sees and asks you to confirm. It never arms silently.</p></div></li>
+        <li><div><h3>If the charger is pulled</h3><p>After your chosen delay: alarm, screen lock, location lookup and email, all started together. The alarm never waits for the email.</p></div></li>
+        <li><div><h3>Recover</h3><p>Follow the Find My steps in the email. Disarm with Touch ID or your Mac password when you are back.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="alt" id="private">
+    <div class="wrap">
+      <h2>Private by design</h2>
+      <p class="sub">No MacGuard server exists. There is nothing to sign up for and nothing to leak.</p>
+      <div class="two">
+        <div class="tile">
+          <h3>What stays on your Mac</h3>
+          <ul class="tick" style="margin-top:10px">
+            <li>Event log, locations and settings, in a folder only you can read</li>
+            <li>Your Brevo key, in the macOS Keychain</li>
+            <li>Passwords: never seen or stored. Touch ID and the system prompt do the checking</li>
+          </ul>
+        </div>
+        <div class="tile">
+          <h3>What leaves your Mac</h3>
+          <ul class="tick" style="margin-top:10px">
+            <li>Only the alert emails, through your own Brevo account to your verified address</li>
+            <li>No analytics, no telemetry, no IP-based guessing of location</li>
+            <li>Alerts never go to an address until you prove it is yours</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:20px"><a href="docs.html#security">Read the security notes, including the one trade-off about the Brevo key →</a></p>
+    </div>
+  </section>
+
+  <section id="limits">
+    <div class="wrap">
+      <h2>What MacGuard can't do</h2>
+      <p class="sub">An app on your Mac cannot stop a determined thief. It is meant to deter and to help you get your Mac back.</p>
+      <div class="two">
+        <div class="tile">
+          <h3>It cannot</h3>
+          <ul class="cross" style="margin-top:10px">
+            <li>Prevent shutdown, force-quit or removing all power</li>
+            <li>Sound the alarm while the Mac is asleep or off</li>
+            <li>Work before you log in</li>
+            <li>Promise the alarm is audible if speakers are muted</li>
+            <li>Show live tracking; location comes in occasional fixes</li>
+          </ul>
+        </div>
+        <div class="tile">
+          <h3>So pair it with</h3>
+          <ul class="tick" style="margin-top:10px">
+            <li>Find My Mac turned on, with the Find My network</li>
+            <li>A strong login password and FileVault</li>
+            <li>Lock Screen set to require a password immediately</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="margin-top:36px">Where things stand</h3>
+      <p class="note" style="margin:10px 0 18px"><strong>Beta.</strong> The code is tested, but not every feature has been proven on real hardware yet. Here is the honest list.</p>
+      <table class="status-table">
+        <thead><tr><th>Feature</th><th>Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Charger detection, alarm, repeat incidents</td><td><span class="badge ok">Tested</span></td><td>Automated tests, including repeated unplug and replug cycles</td></tr>
+          <tr><td>Screen lock</td><td><span class="badge ok">Verified</span></td><td>Confirmed on macOS 27.0.1; other versions untested</td></tr>
+          <tr><td>Physical unplug in the real app</td><td><span class="badge todo">Needs more testing</span></td><td>Detection logic is tested; hardware runs are ongoing</td></tr>
+          <tr><td>Real email through Brevo</td><td><span class="badge todo">Not yet sent</span></td><td>Request format checked against Brevo's live API</td></tr>
+          <tr><td>Location fix and permission prompt</td><td><span class="badge todo">Needs more testing</span></td><td>Tested with simulated locations</td></tr>
+          <tr><td>Signed and notarized download</td><td><span class="badge no">Not available</span></td><td>Build it yourself in a few minutes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <p class="sub">The short answers. The docs have the rest.</p>
+      <details><summary>Is it free?</summary><p>Yes. MacGuard is open source. Brevo's free plan is enough for alerts and needs no domain, only one verified sender address. Check Brevo's site for current limits.</p></details>
+      <details><summary>Does it work without the email setup?</summary><p>Yes. The alarm, screen lock and event log work on their own. Email and location are optional extras.</p></details>
+      <details><summary>Where does my Brevo key live?</summary><p>In your Mac's Keychain, and nowhere else. If your Mac is stolen and not recovered, delete the key in Brevo.</p></details>
+      <details><summary>Will it stop someone shutting down my Mac?</summary><p>No. Nothing an app can do guarantees that, and MacGuard will not pretend otherwise. It raises the alarm and sends you the alert as fast as it can.</p></details>
+      <details><summary>Why does it ask for Touch ID or my password?</summary><p>To stop the alarm, disarm, quit while armed, or change email settings. The system prompt does the check, so MacGuard never sees your password.</p></details>
+      <details><summary>Which Macs are supported?</summary><p>macOS 13 or newer. It is built for Apple Silicon, tested first on a MacBook Air M2.</p></details>
+      <details><summary>How do I remove it?</summary><p>Run the uninstall script from the repository. It removes the app, its data and the Keychain item. Then delete the key in Brevo.</p></details>
+    </div>
+  </section>
+
+  <section id="get">
+    <div class="wrap" style="text-align:center">
+      <h2>Ready to try it?</h2>
+      <p class="sub" style="margin-inline:auto">Build it from source in a few minutes, or read the docs first.</p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn primary" href="docs.html#install">Install guide</a>
+        <a class="btn" href="docs.html">Read the docs</a>
+        <a class="btn" href="https://github.com/prasodium/MacGuard">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="y">2026</span> MacGuard. Not affiliated with Apple or Brevo. Mac, macOS, Find My and Touch ID are Apple trademarks.</div>
+    <div><a href="docs.html">Docs</a> · <a href="https://github.com/prasodium/MacGuard">Source</a> · <a href="https://github.com/prasodium/MacGuard/issues">Report an issue</a></div>
+  </div>
+</footer>
+</body>
+</html>

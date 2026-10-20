@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MacGuard documentation</title>
+  <meta name="description" content="Install, set up and use MacGuard: build from source, Brevo email setup, settings, permissions, limits, security, privacy and troubleshooting.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#doc">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="30" height="30"> MacGuard</a>
+    <nav aria-label="Main">
+      <a class="hide-sm" href="index.html#features">Features</a>
+      <a class="hide-sm" href="index.html#faq">FAQ</a>
+      <a href="docs.html" aria-current="page">Docs</a>
+      <a href="https://github.com/prasodium/MacGuard">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap docs">
+  <aside class="toc" aria-label="On this page">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#install">Install</a></li>
+      <li><a href="#email">Set up email</a></li>
+      <li><a href="#use">Using MacGuard</a></li>
+      <li><a href="#settings">Settings reference</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#findmy">Find My recovery</a></li>
+      <li><a href="#limits">Limitations</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#privacy">Privacy and data</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#status">Testing status</a></li>
+      <li><a href="#uninstall">Uninstall</a></li>
+      <li><a href="#develop">For developers</a></li>
+    </ol>
+  </aside>
+
+  <article class="doc" id="doc">
+    <h1>MacGuard documentation</h1>
+    <p>MacGuard is a native macOS app. While <strong>armed</strong>, it watches your charger. If the charger is unplugged, it sounds an alarm, asks macOS to lock the screen, looks up the Mac's location and emails you. It is a deterrent and recovery aid, not a guarantee.</p>
+
+    <h2 id="overview">Overview</h2>
+    <table>
+      <tr><th>When the charger is pulled</th><th>What MacGuard does</th></tr>
+      <tr><td>1. Alarm</td><td>Starts at once, repeats until you stop it or reconnect the charger.</td></tr>
+      <tr><td>2. Screen lock</td><td>Requests a session lock and reports whether it could confirm it.</td></tr>
+      <tr><td>3. Location</td><td>Asks Core Location for a fix, with a time limit. Works only if you allowed it.</td></tr>
+      <tr><td>4. Email</td><td>Sends an alert to your verified address through Brevo. Queued if you are offline.</td></tr>
+      <tr><td>5. Log</td><td>Records every step in the Event History.</td></tr>
+    </table>
+    <p>The alarm and lock never wait for the email or the location. If email fails, the alarm still sounds.</p>
+
+    <h2 id="requirements">Requirements</h2>
+    <ul>
+      <li>macOS 13 or newer. Built for Apple Silicon (arm64).</li>
+      <li>To build: the Xcode Command Line Tools (<code>xcode-select --install</code>). Full Xcode is not required.</li>
+      <li>For email (optional): a free <a href="https://www.brevo.com">Brevo</a> account and a Gmail or other address you can read.</li>
+    </ul>
+
+    <h2 id="install">Install</h2>
+    <p>There is no signed download yet, so you build the app yourself. It takes a few minutes.</p>
+    <pre><code>git clone https://github.com/prasodium/MacGuard.git
+cd MacGuard
+scripts/build_app.sh release
+cp -R dist/MacGuard.app /Applications/
+open /Applications/MacGuard.app</code></pre>
+    <p>The app is signed ad hoc. On first launch macOS may block it: right-click the app, choose <strong>Open</strong>, then confirm. Look for the lock icon in the menu bar.</p>
+    <p>On first run a short setup guide offers to test the alarm, the screen lock and location. Every step is optional, and nothing locks your screen unless you press the button.</p>
+
+    <h2 id="email">Set up email</h2>
+    <p>Open <strong>Settings → Email</strong> (the gear icon on the dashboard).</p>
+    <ol>
+      <li><strong>Create a Brevo account</strong> and verify one sender address in it. No domain is needed.</li>
+      <li><strong>Create an API key</strong> in Brevo (the <em>Get a key…</em> button opens the page).</li>
+      <li><strong>Brevo section:</strong> paste the key, enter the verified sender, press <strong>Save</strong>. MacGuard checks the key with Brevo and stores it in your Keychain. Touch ID or your password is asked first.</li>
+      <li><strong>Gmail section:</strong> enter your address, press <strong>Send code</strong>, type the 6-digit code you receive, press <strong>Verify</strong>.</li>
+      <li>Turn on <strong>Send email alerts</strong> and press <strong>Send test email</strong>.</li>
+    </ol>
+    <p>Until an address is verified, alerts are held, never sent anywhere. Codes expire after 15 minutes, lock after 5 wrong tries, and you can request 3 per hour. If you change the address later, the old one gets a notice.</p>
+    <p>An email that Brevo accepts is not proof it reached your inbox. Check spam if it is missing.</p>
+
+    <h2 id="use">Using MacGuard</h2>
+    <h3>Arm</h3>
+    <p>Plug in the charger, then press <strong>Arm Protection</strong>. MacGuard shows what it sees and asks you to confirm. It will not arm if the power state is unknown or the charger is not connected.</p>
+    <h3>When it triggers</h3>
+    <p>The dashboard shows <strong>ALARM ACTIVE</strong> with the incident, lock result, location result and email status. Reconnecting the charger stops the alarm by default (changeable in Settings → Alarm). Protection stays armed, and unplugging again starts a new incident.</p>
+    <h3>Stop and disarm</h3>
+    <p><strong>Stop Alarm</strong> and <strong>Disarm Protection</strong> ask for Touch ID or your Mac password. The prompt is the system's own. MacGuard never sees your password.</p>
+    <h3>Closing the window</h3>
+    <p>The window can be closed; MacGuard keeps protecting from the menu bar. Quitting while armed needs authentication.</p>
+    <h3>After a restart</h3>
+    <p>If <em>Resume protection after a restart</em> is on, MacGuard re-arms itself on launch, but only if the charger is connected. It never invents an incident because it was not running.</p>
+
+    <h2 id="settings">Settings reference</h2>
+    <table>
+      <tr><th>Tab</th><th>Option</th><th>What it does</th></tr>
+      <tr><td rowspan="5">Alarm</td><td>Alarm sound, Preview</td><td>Choose from the built-in macOS sounds.</td></tr>
+      <tr><td>Repeat every, Start after</td><td>Gap between plays; optional delay before the first.</td></tr>
+      <tr><td>Raise volume to maximum</td><td>Unmutes and sets the output volume to 100% when the alarm starts.</td></tr>
+      <tr><td>Show a notification</td><td>Adds a banner with the alarm.</td></tr>
+      <tr><td>Stop when the charger is reconnected</td><td>On by default.</td></tr>
+      <tr><td rowspan="4">Detection</td><td>Confirm after</td><td>Immediately, or 1, 3, 5, 10 seconds. Longer cuts false alarms from a loose cable but delays the response.</td></tr>
+      <tr><td>Lock the screen</td><td>Request a session lock on an incident.</td></tr>
+      <tr><td>Start MacGuard at login</td><td>Starts after you log in. It cannot run before login.</td></tr>
+      <tr><td>Resume protection after a restart</td><td>See above.</td></tr>
+      <tr><td rowspan="4">Email</td><td>Brevo key and sender</td><td>See <a href="#email">Set up email</a>.</td></tr>
+      <tr><td>Gmail for alerts</td><td>Address and verification.</td></tr>
+      <tr><td>Follow-ups</td><td>Initial alert only; plus one location update; or periodic updates (every 5 to 60 minutes, up to 24 hours). Unchanged or stale positions are skipped, never repeated.</td></tr>
+      <tr><td>Email when reconnected or disarmed</td><td>Sends a short status email.</td></tr>
+      <tr><td rowspan="3">Location</td><td>Include location in alerts, Accuracy, Wait up to</td><td>Best, about 10 m or about 100 m; 5 to 60 seconds to wait for a fix.</td></tr>
+      <tr><td>Keep last known location, history days</td><td>If no fresh fix arrives, the last one can be included, clearly labelled <em>LAST KNOWN LOCATION</em>.</td></tr>
+      <tr><td>Clear history</td><td>Deletes saved locations.</td></tr>
+      <tr><td>Privacy</td><td>Keep event log, Clear log</td><td>7 to 365 days of history.</td></tr>
+      <tr><td>Tests</td><td>Alarm, Email, Location, setup guide</td><td>Test runs are logged and labelled TEST. They never create theft incidents.</td></tr>
+    </table>
+
+    <h2 id="permissions">Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Why</th><th>Where</th></tr>
+      <tr><td>Location Services</td><td>Put a position in the alert. Asked only for a test or an incident, never continuously.</td><td>System Settings → Privacy &amp; Security → Location Services</td></tr>
+      <tr><td>Notifications</td><td>Optional alarm banner.</td><td>System Settings → Notifications</td></tr>
+      <tr><td>Login Items</td><td>Start at login.</td><td>System Settings → General → Login Items</td></tr>
+    </table>
+    <p>No Accessibility, Full Disk Access or administrator rights. For the lock to be effective, set <strong>Lock Screen → Require password after screen saver begins or display is turned off</strong> to <em>Immediately</em>.</p>
+
+    <h2 id="findmy">Find My recovery</h2>
+    <ol>
+      <li>Turn on <strong>Find My Mac</strong> and the <strong>Find My network</strong> in System Settings → your name → iCloud.</li>
+      <li>Check you can sign in to the same Apple Account on another device.</li>
+      <li>Open <a href="https://www.icloud.com/find">icloud.com/find</a> and select the Mac.</li>
+      <li>Use <strong>Mark as Lost</strong> to lock it with a passcode if needed.</li>
+      <li>If you think it was stolen, contact the police. Do not confront anyone.</li>
+    </ol>
+    <p>MacGuard cannot read Find My locations, never asks for your Apple password and never automates Apple sign-in. Whether Find My shows a current location depends on Apple's service and the Mac's state.</p>
+
+    <h2 id="limits">Limitations</h2>
+    <div class="note"><strong>Read this.</strong> MacGuard cannot prevent shutdown, force-quit, or removal of all power, and it has no effect while the Mac is off or asleep.</div>
+    <ul>
+      <li><strong>Charger monitoring</strong> works only while MacGuard is running. If the app is killed or the Mac shuts down, nothing is detected. A gap is logged on the next start but never turned into a fake incident. A Mac unplugged <em>while asleep</em> counts as a real unplug when it wakes.</li>
+      <li><strong>Alarm</strong> can be inaudible if the speakers are muted or audio goes to headphones. It cannot play during sleep.</li>
+      <li><strong>Screen lock</strong> protects a running session only. macOS has no public "lock now" call, so MacGuard uses a private system function and falls back to sleeping the display. It says "verified" only when macOS confirms the lock.</li>
+      <li><strong>Location</strong> is an estimate and needs permission and a network. It can be old. It is never guessed from an IP address. It is not live tracking.</li>
+      <li><strong>Email</strong> needs internet. If the Mac never reconnects, nothing is sent.</li>
+      <li><strong>Arming on battery</strong> is intentionally not supported.</li>
+    </ul>
+
+    <h2 id="security">Security</h2>
+    <ul>
+      <li><strong>The Brevo key is on your Mac</strong>, in the Keychain, readable by the app while the Mac is locked so alerts can still go out. It is never written to files or logs. <em>Trade-off:</em> someone with access to your logged-in account could use it to send mail through your Brevo account. Keep the screen lock on, use a key only for MacGuard, and <strong>delete the key in Brevo if the Mac is lost</strong>.</li>
+      <li><strong>Verified address only.</strong> Alerts go nowhere until an address proves itself with the emailed code.</li>
+      <li><strong>Owner authentication</strong> uses the system prompt for Disarm, Stop Alarm, quitting while armed, and changing email settings.</li>
+      <li><strong>HTTPS only</strong> to Brevo. Local data is stored with owner-only permissions.</li>
+      <li><strong>One private API:</strong> the screen-lock call, used only on an incident or an explicit test.</li>
+      <li>No root, no background daemon, no tricks to stop you quitting or uninstalling.</li>
+    </ul>
+    <p>Found a vulnerability? Please open a private security advisory on the <a href="https://github.com/prasodium/MacGuard/security/advisories">GitHub repository</a>.</p>
+
+    <h2 id="privacy">Privacy and data</h2>
+    <p>There is no MacGuard server, account, analytics or telemetry.</p>
+    <ul>
+      <li><strong>On your Mac:</strong> event log, incidents, queued alerts and saved locations in <code>~/Library/Application Support/MacGuard</code> (owner-only), settings, and the Brevo key in the Keychain. Defaults: events kept 90 days, locations 7 days, both adjustable.</li>
+      <li><strong>Sent out:</strong> only alert and verification emails, through your own Brevo account to your verified address. An alert contains the incident id, device name and model, macOS version, battery, power states, times, alarm and lock status, and the location if available.</li>
+    </ul>
+
+    <h2 id="troubleshooting">Troubleshooting</h2>
+    <details><summary>"Cannot arm"</summary><p>The charger is unplugged or the power state cannot be read. Plug in, then check Monitoring on the dashboard.</p></details>
+    <details><summary>The alarm did not sound on a second unplug</summary><p>Fixed in current versions: an unplug after a reconnect is a new incident. Rebuild from the latest source. If it still happens, check the Event History and open an issue.</p></details>
+    <details><summary>Location unavailable</summary><p>Allow MacGuard in Location Services and run Test Location in Settings → Tests. Run the signed <code>.app</code>; a bare binary cannot get the prompt.</p></details>
+    <details><summary>Test email fails</summary><p>The message says why. "Rejected the key": save a fresh key. "Sender is not verified": verify that sender address in Brevo. "No verified alert address": finish the Gmail step. Also check spam.</p></details>
+    <details><summary>Screen lock shows "not verified"</summary><p>The lock call may be unavailable on your macOS version and the fallback only slept the display. Set Lock Screen to require the password immediately.</p></details>
+    <details><summary>Login item does not start</summary><p>Approve MacGuard in System Settings → General → Login Items.</p></details>
+    <details><summary>Settings look out of date</summary><p>Update to the latest source; older builds refreshed some values only after switching tabs.</p></details>
+
+    <h2 id="status">Testing status</h2>
+    <p>MacGuard is a beta. <strong>90 automated tests pass</strong> (power detection, state machine, repeated incidents, location logic, Brevo requests, email verification, templates, security checks). Run them with <code>scripts/test.sh</code>.</p>
+    <table>
+      <tr><th>Verified on a real Mac</th><th>Not yet verified</th></tr>
+      <tr><td><ul>
+        <li>Live power reading</li><li>Alarm sound playback starts</li><li>Screen lock (macOS 27.0.1)</li><li>Keychain and database round trips</li><li>App launches and opens Settings</li>
+      </ul></td><td><ul>
+        <li>Physical charger unplug in the real app, over many cycles</li><li>A real email through Brevo</li><li>Real location fix and permission prompt</li><li>Sleep and wake, login item, restart behaviour</li><li>Signed and notarized builds; battery impact</li>
+      </ul></td></tr>
+    </table>
+    <p>The full manual checklist is in <a href="https://github.com/prasodium/MacGuard/blob/main/TESTING.md">TESTING.md</a>.</p>
+
+    <h2 id="uninstall">Uninstall</h2>
+    <p>Disarm first, then from the repository:</p>
+    <pre><code>scripts/uninstall.sh</code></pre>
+    <p>This removes the app, <code>~/Library/Application Support/MacGuard</code>, preferences and the Keychain item. Then delete the API key in Brevo and remove MacGuard from Login Items and Location Services if listed.</p>
+
+    <h2 id="develop">For developers</h2>
+    <pre><code>scripts/test.sh                  # Swift tests
+scripts/build_app.sh debug       # build dist/MacGuard.app
+dist/MacGuard.app/Contents/MacOS/MacGuard --self-check --play     # hardware smoke test</code></pre>
+    <p>The project is a Swift package: <code>MacGuardCore</code> (all logic, no UI) and <code>MacGuard</code> (SwiftUI app). With only the Command Line Tools, <code>@State</code> and Swift Testing macros have no compiler plugin by default, so the UI uses a small <code>@Local</code> wrapper and <code>scripts/test.sh</code> loads the testing plugin explicitly. Architecture notes are in <a href="https://github.com/prasodium/MacGuard/blob/main/ARCHITECTURE.md">ARCHITECTURE.md</a>.</p>
+    <p>Release: <code>SIGN_IDENTITY="Developer ID Application: …" scripts/package.sh</code>, then notarize with <code>xcrun notarytool</code> and staple. Not yet done for this project.</p>
+  </article>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 MacGuard. Not affiliated with Apple or Brevo.</div>
+    <div><a href="index.html">Home</a> · <a href="https://github.com/prasodium/MacGuard">Source</a> · <a href="https://github.com/prasodium/MacGuard/issues">Report an issue</a></div>
+  </div>
+</footer>
+</body>
+</html>
