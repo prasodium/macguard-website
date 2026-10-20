@@ -6,7 +6,7 @@
   <title>MacGuard — Anti-theft alarm for your Mac</title>
   <meta name="description" content="Unplug the charger while armed and MacGuard sounds an alarm, locks the screen and emails you the Mac's location. Free and open source for macOS.">
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#e2f5e8">
+  <meta name="theme-color" content="#eaf7ef">
   <meta property="og:title" content="MacGuard — Anti-theft alarm for your Mac">
   <meta property="og:description" content="Alarm, screen lock, location and an email alert when your charger is unplugged.">
   <meta property="og:image" content="assets/icon.png">
@@ -19,12 +19,12 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="30" height="30"> MacGuard</a>
+    <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="26" height="26"> MacGuard</a>
     <nav aria-label="Main">
       <a class="hide-sm" href="#features">Features</a>
-      <a href="#download">Download</a>
-      <a href="docs.html">Docs</a>
-      <a href="https://github.com/prasodium/MacGuard">GitHub</a>
+      <a class="hide-sm" href="docs.html">Docs</a>
+      <a class="hide-sm" href="https://github.com/prasodium/MacGuard">GitHub</a>
+      <a class="pill" href="#download">Download</a>
     </nav>
   </div>
 </header>
@@ -32,97 +32,91 @@
 <main id="main">
   <section class="hero" id="top">
     <div class="wrap">
-      <div>
-        <span class="eyebrow">Beta · v0.1.0</span>
-        <h1>Unplug your Mac, and it sounds the alarm.</h1>
-        <p class="lede">Arm MacGuard when you step away. If the charger comes out, it makes noise, locks the screen and emails you where the Mac is.</p>
-        <div class="cta">
-          <a class="btn primary" href="#download">Download for Mac</a>
-          <a class="btn" href="docs.html">Read the docs</a>
-        </div>
-        <p class="meta">Free · open source · macOS 13+ · Apple Silicon</p>
+      <img class="app-icon" src="assets/icon.png" alt="MacGuard app icon" width="92" height="92">
+      <span class="eyebrow">Beta · v0.1.0</span>
+      <h1>Unplug your Mac, and it sounds the alarm.</h1>
+      <p class="lede">Arm MacGuard when you step away. If the charger comes out, it makes noise, locks the screen and emails you where the Mac is.</p>
+      <div class="cta">
+        <a class="btn primary big" href="#download">Download for Mac</a>
+        <a class="btn ghost" href="docs.html">Read the docs &rsaquo;</a>
       </div>
+      <p class="meta">Free · open source · macOS 13+ · Apple Silicon</p>
+    </div>
 
-      <div aria-hidden="true">
-        <div class="mock">
-          <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b>MacGuard</b></div>
-          <div class="body">
-            <div class="status"><div class="ico">🛡️</div><div class="big">PROTECTED</div><span class="pill">Disarm</span></div>
-            <div class="cards">
-              <div class="card-s"><small>Charger</small>Connected</div>
-              <div class="card-s"><small>Battery</small>87%</div>
-              <div class="card-s"><small>Location</small>On</div>
-              <div class="card-s"><small>Email</small>Ready</div>
-            </div>
+    <div class="stage" aria-hidden="true">
+      <div class="window">
+        <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b>MacGuard</b></div>
+        <div class="body">
+          <div class="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg><div class="big">PROTECTED</div><span class="pill">Disarm</span></div>
+          <div class="cards">
+            <div class="card-s"><span><small>Charger</small>Connected</span><i></i></div>
+            <div class="card-s"><span><small>Battery</small>87%</span><i></i></div>
+            <div class="card-s"><span><small>Location</small>On</span><i></i></div>
+            <div class="card-s"><span><small>Email</small>Ready</span><i></i></div>
           </div>
         </div>
-        <p class="caption">Illustration</p>
       </div>
     </div>
   </section>
 
-  <section class="alt" id="features">
+  <section class="white" id="features">
     <div class="wrap">
-      <h2>What it does</h2>
+      <div class="center"><h2>Built for the moment it matters.</h2><p class="sub">Everything starts the instant the charger is pulled.</p></div>
       <div class="grid">
-        <div class="tile"><div class="ic">⚡</div><h3>Charger detection</h3><p>Notices the unplug right away, with an optional delay to avoid false alarms.</p></div>
-        <div class="tile"><div class="ic">🔔</div><h3>Loud alarm</h3><p>Sounds on every unplug. Stops when you reconnect or confirm with Touch ID.</p></div>
-        <div class="tile"><div class="ic">🔒</div><h3>Screen lock</h3><p>Locks your session and tells you if the lock was confirmed.</p></div>
-        <div class="tile"><div class="ic">📍</div><h3>Location</h3><p>Adds a position to the alert, labelled fresh, cached or last known.</p></div>
-        <div class="tile"><div class="ic">✉️</div><h3>Email alert</h3><p>Sent through your own Brevo account to a Gmail you verified.</p></div>
-        <div class="tile"><div class="ic">🧭</div><h3>Find My guide</h3><p>One button opens Apple's Find My with the steps to recover your Mac.</p></div>
+        <div class="tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Charger detection</h3><p>Notices the unplug right away, with an optional delay to avoid false alarms.</p></div>
+        <div class="tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><h3>Loud alarm</h3><p>Sounds on every unplug. Stops when you reconnect or confirm with Touch ID.</p></div>
+        <div class="tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3>Screen lock</h3><p>Locks your session and tells you if the lock was confirmed.</p></div>
+        <div class="tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Location</h3><p>Adds a position to the alert, labelled fresh, cached or last known.</p></div>
+        <div class="tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Email alert</h3><p>Sent through your own Brevo account to a Gmail you verified.</p></div>
+        <div class="tile"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></div><h3>Find My guide</h3><p>One button opens Apple&rsquo;s Find My with the steps to recover your Mac.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="download">
+  <section class="tint" id="download">
     <div class="wrap">
-      <h2>Download</h2>
-      <div class="dl">
-        <img src="assets/icon.png" alt="" width="72" height="72">
-        <div class="dl-info">
-          <h3>MacGuard 0.1.0 <span class="badge todo">Beta</span></h3>
-          <p>Released Oct 20, 2026 · 0.8 MB · macOS 13+ · Apple Silicon</p>
-        </div>
-        <div class="dl-actions">
-          <a class="btn primary" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.dmg">Download .dmg</a>
-          <a class="btn" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.pkg">.pkg installer</a>
-          <a class="btn" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.zip">.zip</a>
-        </div>
+      <div class="center"><h2>Download MacGuard.</h2><p class="sub">Free for Mac. No account needed.</p></div>
+      <div class="dl-card">
+        <img src="assets/icon.png" alt="" width="96" height="96">
+        <h3>MacGuard 0.1.0 <span class="badge beta">Beta</span></h3>
+        <p class="meta">Released Oct 20, 2026 · 0.8 MB · macOS 13 or later · Apple Silicon</p>
+        <a class="btn primary big" href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.dmg">Download for Mac</a>
+        <p class="fine"><a href="https://github.com/prasodium/MacGuard/releases/tag/v0.1.0">Release notes</a></p>
       </div>
       <ol class="steps">
-        <li><div><h3>Open the .dmg and drag MacGuard to Applications</h3><p>Or double-click the .pkg to install it for you.</p></div></li>
-        <li><div><h3>Right-click the app, choose Open, then Open again</h3><p>It is not notarized yet, so macOS blocks a normal double-click the first time.</p></div></li>
-        <li><div><h3>Follow the setup guide</h3><p>Email is optional. The alarm and screen lock work without it.</p></div></li>
+        <li><h3>Open the .dmg</h3><p>Drag MacGuard onto the Applications folder.</p></li>
+        <li><h3>Right-click, then Open</h3><p>Choose Open, then Open again. It is not notarized yet, so macOS asks the first time.</p></li>
+        <li><h3>Follow the setup</h3><p>Email is optional. The alarm and screen lock work without it.</p></li>
       </ol>
-      <p class="hash"><a href="https://github.com/prasodium/MacGuard/releases/tag/v0.1.0">Release notes and checksums</a></p>
     </div>
   </section>
 
-  <section class="alt" id="limits">
+  <section class="white" id="limits">
     <div class="wrap">
-      <h2>Good to know</h2>
-      <div class="grid">
-        <div class="tile"><div class="ic">🖥️</div><h3>Runs on your Mac</h3><p>No server, no account, no tracking.</p></div>
-        <div class="tile"><div class="ic">🔑</div><h3>Key in the Keychain</h3><p>Your Brevo key never leaves your Mac.</p></div>
-        <div class="tile"><div class="ic">✅</div><h3>Verified address only</h3><p>Alerts go only to an email you confirmed.</p></div>
+      <div class="center"><h2>Private by design.</h2></div>
+      <div class="cols" style="margin-top:40px">
+        <div><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>Runs on your Mac</h3><p>No server, no account, no tracking.</p></div>
+        <div><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.78 7.78 5.5 5.5 0 0 1 7.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div><h3>Key in the Keychain</h3><p>Your Brevo key never leaves your Mac.</p></div>
+        <div><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Verified address only</h3><p>Alerts go only to an email you confirmed.</p></div>
       </div>
     </div>
   </section>
 
   <section id="faq">
     <div class="wrap">
-      <h2>Questions</h2>
-      <details><summary>Is it free?</summary><p>Yes, and open source. Brevo's free plan is enough for alerts.</p></details>
-      <details><summary>Does it work without email?</summary><p>Yes. The alarm and screen lock need no setup.</p></details>
-      <details><summary>Why Touch ID or my password?</summary><p>To stop the alarm, disarm, or change email settings. MacGuard never sees your password.</p></details>
+      <div class="center"><h2>Questions.</h2></div>
+      <div class="faq" style="margin-top:36px">
+        <details><summary>Is it free?</summary><p>Yes, and open source. Brevo&rsquo;s free plan is enough for alerts.</p></details>
+        <details><summary>Does it work without email?</summary><p>Yes. The alarm and screen lock need no setup.</p></details>
+        <details><summary>Why Touch ID or my password?</summary><p>To stop the alarm, disarm, or change email settings. MacGuard never sees your password.</p></details>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div>© 2026 MacGuard. Not affiliated with Apple or Brevo.</div>
+    <div>© 2026 MacGuard. Not affiliated with Apple or Brevo. Mac, macOS, Touch ID and Find My are trademarks of Apple Inc.</div>
     <div><a href="docs.html">Docs</a> · <a href="https://github.com/prasodium/MacGuard">Source</a> · <a href="https://github.com/prasodium/MacGuard/issues">Issues</a></div>
   </div>
 </footer>
