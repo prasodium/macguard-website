@@ -47,7 +47,7 @@
 
     <h2 id="install">Install</h2>
     <ol>
-      <li>Download <a href="https://github.com/prasodium/MacGuard/releases/download/v0.2.2/MacGuard-0.2.2.dmg">MacGuard-0.2.2.dmg</a>, open it and drag <strong>MacGuard</strong> to Applications.</li>
+      <li>Download <a href="https://github.com/prasodium/MacGuard/releases/download/v0.2.3/MacGuard-0.2.3.dmg">MacGuard-0.2.3.dmg</a>, open it and drag <strong>MacGuard</strong> to Applications.</li>
       <li>Right-click the app, choose <strong>Open</strong>, then <strong>Open</strong> again. It is not notarized yet.</li>
       <li>If macOS says it is damaged, run <code>xattr -dr com.apple.quarantine /Applications/MacGuard.app</code> once.</li>
     </ol>
@@ -80,6 +80,9 @@
 
     <h3>What the email contains</h3>
     <p>One email per theft: the alert and the location together, with a map link. If the Mac was offline and the internet comes back while it is still unplugged, MacGuard sends a fresh position, so the link shows where the Mac is now. The link points to that moment's position; it is not a live-updating page.</p>
+
+    <h3>When the charger is plugged back in</h3>
+    <p>New location emails stop, and MacGuard asks <strong>Did you find your Mac?</strong> in a notification and on the Dashboard. Press <strong>I found my Mac</strong> (Touch ID or password) to cancel any emails still waiting and disarm. If someone else plugged it in, press <strong>No, keep tracking</strong> to continue the location emails.</p>
 
     <h3>Repeat emails while unplugged (optional)</h3>
     <p>Open <strong>Settings → Email → Repeat emails while unplugged</strong>, set <strong>Send</strong> to <em>Repeat while the charger is unplugged</em>, then choose <strong>Every</strong> 1, 2, 5, 10, 15, 30 or 60 minutes.</p>
