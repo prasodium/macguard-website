@@ -47,7 +47,7 @@
 
     <h2 id="install">Install</h2>
     <ol>
-      <li>Download <a href="https://github.com/prasodium/MacGuard/releases/download/v0.2.0/MacGuard-0.2.0.dmg">MacGuard-0.2.0.dmg</a>, open it and drag <strong>MacGuard</strong> to Applications.</li>
+      <li>Download <a href="https://github.com/prasodium/MacGuard/releases/download/v0.2.1/MacGuard-0.2.1.dmg">MacGuard-0.2.1.dmg</a>, open it and drag <strong>MacGuard</strong> to Applications.</li>
       <li>Right-click the app, choose <strong>Open</strong>, then <strong>Open</strong> again. It is not notarized yet.</li>
       <li>If macOS says it is damaged, run <code>xattr -dr com.apple.quarantine /Applications/MacGuard.app</code> once.</li>
     </ol>
@@ -78,16 +78,15 @@
     </ol>
     <p>Alerts go only to a verified address.</p>
 
-    <h3>Email delay (optional)</h3>
-    <p>If you get too many emails, open <strong>Settings → Email → Email delay</strong> and set <strong>Wait between emails</strong> to 1, 2, 5, 10, 15, 30 or 60 minutes. The default is no delay.</p>
+    <h3>Repeat emails while unplugged (optional)</h3>
+    <p>Open <strong>Settings → Email → Repeat emails while unplugged</strong>, set <strong>Send</strong> to <em>Repeat while the charger is unplugged</em>, then choose <strong>Every</strong> 1, 2, 5, 10, 15, 30 or 60 minutes.</p>
     <table>
-      <tr><th>Rule</th><th>What happens</th></tr>
-      <tr><td>First alert</td><td>Sent immediately.</td></tr>
-      <tr><td>Later alerts</td><td>Held until the delay ends, then sent automatically. Nothing is lost, even if you quit the app.</td></tr>
-      <tr><td>Location updates</td><td>Only the newest one for an incident is sent.</td></tr>
-      <tr><td>Test email, verification code</td><td>Never delayed.</td></tr>
+      <tr><th>When</th><th>What happens</th></tr>
+      <tr><td>You unplug the charger</td><td>The first alert is sent at once and the timer starts.</td></tr>
+      <tr><td>It stays unplugged</td><td>An email is sent every interval, for example at 10, 20 and 30 minutes.</td></tr>
+      <tr><td>You plug it back in</td><td>The repeats stop and the timer resets. Unplugging again starts a new timer.</td></tr>
     </table>
-    <p>A second, separate theft event during the delay also waits, so its alert can be late by up to the delay you set.</p>
+    <p>Each email has the best position available and says whether it is fresh, cached or last known. Repeats end after the <strong>Stop after</strong> time (1 to 24 hours).</p>
 
     <h3>If email fails</h3>
     <table>
@@ -134,7 +133,7 @@
     <table>
       <tr><th>Problem</th><th>Fix</th></tr>
       <tr><td>Can't arm</td><td>Plug in the charger and check the Charger tile.</td></tr>
-      <tr><td>No location</td><td>Allow MacGuard in Location Services, then run Test Location.</td></tr>
+      <tr><td>No location</td><td>Open Settings → Location. Press <strong>Allow</strong> if it says Not asked yet, or <strong>Open Location Settings</strong> and turn MacGuard on (off and on again if it already is). Then run Test Location. After updating from 0.2.0 or earlier, allow it once more; from 0.2.1 on it survives updates.</td></tr>
       <tr><td>Email fails</td><td>"Rejected the key": save a new key. "Sender": verify it in Brevo. Check spam.</td></tr>
       <tr><td>Lock not confirmed</td><td>Set Lock Screen to require the password immediately.</td></tr>
     </table>
