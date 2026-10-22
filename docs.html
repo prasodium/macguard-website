@@ -47,21 +47,57 @@
 
     <h2 id="install">Install</h2>
     <ol>
-      <li>Download <a href="https://github.com/prasodium/MacGuard/releases/download/v0.1.0/MacGuard-0.1.0.dmg">MacGuard-0.1.0.dmg</a>, open it and drag <strong>MacGuard</strong> to Applications.</li>
+      <li>Download <a href="https://github.com/prasodium/MacGuard/releases/download/v0.2.0/MacGuard-0.2.0.dmg">MacGuard-0.2.0.dmg</a>, open it and drag <strong>MacGuard</strong> to Applications.</li>
       <li>Right-click the app, choose <strong>Open</strong>, then <strong>Open</strong> again. It is not notarized yet.</li>
       <li>If macOS says it is damaged, run <code>xattr -dr com.apple.quarantine /Applications/MacGuard.app</code> once.</li>
     </ol>
     <p>Or build it yourself: <code>scripts/build_app.sh release</code> in the <a href="https://github.com/prasodium/MacGuard">repository</a>. Allow Location when asked, and set <strong>Lock Screen → Require password</strong> to <em>Immediately</em>.</p>
 
     <h2 id="email">Set up email</h2>
-    <p>Optional. Open <strong>Settings → Email</strong> (the gear icon).</p>
+    <p>Optional; the alarm and screen lock work without it. It takes about ten minutes. Open <strong>Settings → Email</strong> (the gear icon) in MacGuard.</p>
+
+    <h3>1. Brevo account and sender</h3>
     <ol>
-      <li>Make a free <a href="https://www.brevo.com">Brevo</a> account, verify one sender address, and create an API key.</li>
-      <li>Paste the key and sender, then press <strong>Save</strong>. The key is kept in your Keychain.</li>
-      <li>Enter your Gmail, press <strong>Send code</strong>, type the 6-digit code, press <strong>Verify</strong>.</li>
-      <li>Press <strong>Send test email</strong>.</li>
+      <li>Sign up for a free account at <a href="https://www.brevo.com">brevo.com</a> and confirm the email Brevo sends you.</li>
+      <li>In Brevo open <strong>Senders, Domains &amp; Dedicated IPs → Senders</strong> and press <strong>Add a sender</strong>. Enter a name and the address alerts should come from.</li>
+      <li>Open the verification email Brevo sends to that address and confirm it. Wait until the sender shows <strong>Verified</strong>.</li>
+    </ol>
+
+    <h3>2. API key</h3>
+    <ol>
+      <li>In MacGuard press <strong>Get a key…</strong>. Brevo opens at <strong>SMTP &amp; API → API Keys</strong>.</li>
+      <li>Press <strong>Generate a new API key</strong>, name it MacGuard and copy it. Brevo shows it only once. Use an <strong>API</strong> key (starts with <code>xkeysib-</code>), not an SMTP password.</li>
+      <li>Paste it into <strong>API key</strong>, type the verified sender into <strong>Sender</strong> exactly as in Brevo, and press <strong>Save</strong>. The key is stored only in your Keychain.</li>
+    </ol>
+
+    <h3>3. Alert address and test</h3>
+    <ol>
+      <li>Under <strong>Gmail for alerts</strong> enter the address that should get alerts and press <strong>Send code</strong>.</li>
+      <li>Type the 6-digit code and press <strong>Verify</strong>. The code lasts 15 minutes and allows 5 tries.</li>
+      <li>Press <strong>Send test email</strong>, then check the inbox and spam. "Accepted by Brevo" means Brevo took it; delivery is not confirmed.</li>
     </ol>
     <p>Alerts go only to a verified address.</p>
+
+    <h3>Email delay (optional)</h3>
+    <p>If you get too many emails, open <strong>Settings → Email → Email delay</strong> and set <strong>Wait between emails</strong> to 1, 2, 5, 10, 15, 30 or 60 minutes. The default is no delay.</p>
+    <table>
+      <tr><th>Rule</th><th>What happens</th></tr>
+      <tr><td>First alert</td><td>Sent immediately.</td></tr>
+      <tr><td>Later alerts</td><td>Held until the delay ends, then sent automatically. Nothing is lost, even if you quit the app.</td></tr>
+      <tr><td>Location updates</td><td>Only the newest one for an incident is sent.</td></tr>
+      <tr><td>Test email, verification code</td><td>Never delayed.</td></tr>
+    </table>
+    <p>A second, separate theft event during the delay also waits, so its alert can be late by up to the delay you set.</p>
+
+    <h3>If email fails</h3>
+    <table>
+      <tr><th>Message</th><th>Fix</th></tr>
+      <tr><td>Brevo rejected the key</td><td>Generate a new API key and save it again.</td></tr>
+      <tr><td>Check that the sender address is verified</td><td>Finish step 1 and copy the sender exactly.</td></tr>
+      <tr><td>Your Brevo plan cannot send more email</td><td>Check Brevo for a daily limit or an account activation notice.</td></tr>
+      <tr><td>Send code is greyed out</td><td>Save the key first and include the <code>@</code> in the address.</td></tr>
+    </table>
+    <p>Brevo may hold new accounts for a manual check, and may refuse free-mail senders such as <code>@gmail.com</code> unless the domain is authenticated. If sending still fails, use a sender on a domain you own.</p>
 
     <h2 id="use">Use it</h2>
     <table>
